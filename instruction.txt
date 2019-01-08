@@ -1,0 +1,29 @@
+目录结构resources
+    static：静态资源(js css 图片 音频 视频)
+    templates：模板文件(模板引擎freemarker thymeleaf，默认不支持jsp)
+    application.properties：springboot的配置文件
+
+springboot内置了tomcat，并且不需要打成war包再执行
+可以在application.properties中对端口号等服务端信息进行配置
+
+springboot将各个应用/三方框架 设置成了一个个"场景"starter，以后要用哪个，只需要引入哪个场景即可。
+引入后，springboot会将该场景所需要的所有依赖自动注入
+
+@SpringBootApplication：springboot的主配置类(约定优于配置)
+    该注解包含：
+        @SpringBootConfiguration：包含@Configuration(表示"配置类"：1.该类是一个配置类；2.加了@Configuration注解的类，会自动纳入spring
+            IOC容器，类似@Component)
+        @EnableAutoConfiguration：
+            包含@AutoConfigurationPackage，开启自动配置的类型，使springboot可以自动配置(自己写的包/类)
+                (可以找到@SpringBootApplication所在类的包，作用：就会将该包及其所有的子包纳入IOC容器)
+                传统写法：com.netease.accidence手工写到scan扫描器中(即加入spring容器)
+            @Import({AutoConfigurationImportSelector.class}) springboot在启动时，会根据META-INF/spring.factories(spring-boot-autoconfigure/2.1.1.RELEASE/spring-boot-autoconfigure-2.1.1.RELEASE.jar!/META-INF/spring.factories)找到相应的三方依赖，
+                并将这些依赖引入本项目，并且自动配置
+
+            spring.xml springmvc.xml mybatis-config.xml
+
+            总结：
+                a.编写项目时，一般会对自己写的代码 以及 三方依赖 进行配置。但是springboot可以自动进行配置：
+                    i:自己的代码，springboot通过@AutoConfigurationPackage自动帮我们配置；
+                    ii:三方依赖 通过META-INF/spring.factories进行声明，然后通过@Import({AutoConfigurationImportSelector.class})开启使用
+        @ComponentScan
