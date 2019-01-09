@@ -18,7 +18,7 @@ springboot将各个应用/三方框架 设置成了一个个"场景"starter，�
                 (可以找到@SpringBootApplication所在类的包，作用：就会将该包及其所有的子包纳入IOC容器)
                 传统写法：com.netease.accidence手工写到scan扫描器中(即加入spring容器)
             @Import({AutoConfigurationImportSelector.class}) springboot在启动时，会根据META-INF/spring.factories(spring-boot-autoconfigure/2.1.1.RELEASE/spring-boot-autoconfigure-2.1.1.RELEASE.jar!/META-INF/spring.factories)找到相应的三方依赖，
-                并将这些依赖引入本项目，并且自动配置
+                并将这些依赖引入本项目，并且自动配置。包含整个j2ee的三房依赖
 
             spring.xml springmvc.xml mybatis-config.xml
 
@@ -26,4 +26,30 @@ springboot将各个应用/三方框架 设置成了一个个"场景"starter，�
                 a.编写项目时，一般会对自己写的代码 以及 三方依赖 进行配置。但是springboot可以自动进行配置：
                     i:自己的代码，springboot通过@AutoConfigurationPackage自动帮我们配置；
                     ii:三方依赖 通过META-INF/spring.factories进行声明，然后通过@Import({AutoConfigurationImportSelector.class})开启使用
+                    iii:如何自动装配：
+                        研究org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration
+                        通过观察该源码，发现：
+                          @Configuration：标识此类是一个配置类、将此类纳入springIOC容器
+                          @EnableConfigurationProperties({HttpProperties.class})：通过HttpProperties将编码设置为UTF_8
+                              (即自动装配为UTF_8)，该注解提供了默认编码utf_8，并且提供了prefix+属性名 的方式，供开发者修改编码
+                                如何修改编码？
+                                    通过相关HttpEncodingProperties的 prefix+属性名 进行修改 [配置文件中，yml/properties]
+                          @ConditionalOnWebApplication(
+                              type = Type.SERVLET
+                          )
+                          @ConditionalOnClass({CharacterEncodingFilter.class})
+                          @ConditionalOnProperty(
+                              prefix = "spring.http.encoding",
+                              value = {"enabled"},
+                              matchIfMissing = true
+                          )
+                            当满足以上三个条件时，springboot才会自动装配该类
+                  b.每一个XxxAutoConfiguration 都有很多条件@ConditionalOnXxx，当这些条件都满足时，则此配置自装配动生效。但是我们可以手动修改 自动装配的
+                      配置信息：此时自动装配条件将会不满足，在XxxProperties文件中的 prefix.属性名=value
+                      全局配置文件中的Key，来源于某个Properties文件中的 prefix + 属性名
+                      如何知道springboot开启了哪些自动装配、禁止了哪些自动装配：
+                        在application.properties中 debug=true
+                        运行项目会有很多log
+                            Positive matches列表标识springboot自动开启的装配
+                            Negative matches列表标识springboot没有开启的装配
         @ComponentScan
