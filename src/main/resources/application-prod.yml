@@ -1,0 +1,24 @@
+server:
+  port: 9528
+
+#对应的实体类上加注解，并且要加getter/setter
+student:
+#  name: jack-prod
+  age: 20
+  birthday: 2018/08/26
+#  locations: {province: 安徽, city: 合肥, zoom: 包河} #行内写法
+  locations:
+    province: "安\n徽"
+    city: '合\n肥'
+    zoom: 包\n河
+  skills:
+    - 编程
+    - 送外卖
+#  skills: [健身, 编程]
+#  hobbies:
+#  - 游戏
+#  - 足球
+  hobbies: [LOL, MV]
+  pet:
+    nickName: 旺财
+    strain: 哈士奇
