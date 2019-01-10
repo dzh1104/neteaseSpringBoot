@@ -4,7 +4,7 @@ public class Pet {
 
 private String nickname;
 
-private String strain;
+private String strain2;
 
 public String getNickname() {
     
@@ -18,18 +18,18 @@ public void setNickname(String nickname) {
 
 public String getStrian() {
     
-    return strain;
+    return strain2;
 }
 
-public void setStrian(String strain) {
+public void setStrian(String strain2) {
     
-    this.strain = strain;
+    this.strain2 = strain2;
 }
 
 @Override
 public String toString() {
     
-    return "Pet{" + "nickname='" + nickname + '\'' + ", strain='" + strain + '\'' + '}';
+    return "Pet{" + "nickname='" + nickname + '\'' + ", strain2='" + strain2 + '\'' + '}';
 }
 
 }

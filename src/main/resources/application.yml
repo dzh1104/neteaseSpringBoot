@@ -13,9 +13,9 @@ student:
   hobbies:
     - 游戏
     - 足球
-  pet:
-    nickName: 旺财
-    strain: 哈士奇
+  pet: {strain2: 哈士奇2, nickname: 旺财678}
+#    strain2: 哈士奇2
+#    nickname: 旺财678
 
 
 #一个yml文件中可以写多个配置文件，配置文件之间用 --- 分割

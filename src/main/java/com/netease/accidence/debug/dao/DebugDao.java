@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 public class DebugDao {
     
     public String getMsg() {
+        Object obj = null;
+    
+        System.out.println(obj.toString());
         return "数据库信息...";
     }
     

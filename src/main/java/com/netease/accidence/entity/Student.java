@@ -23,7 +23,7 @@ private Date birthday;
 
 private Map<String, Object> locations;
 
-private Array skills;
+private String[] skills;
 
 private List<String> hobbies;
 
@@ -79,12 +79,7 @@ public void setLocations(Map<String, Object> locations) {
     this.locations = locations;
 }
 
-public Array getSkills() {
-    
-    return skills;
-}
-
-public void setSkills(Array skills) {
+public void setSkills(String[] skills) {
     
     this.skills = skills;
 }
@@ -113,7 +108,8 @@ public void setPet(Pet pet) {
 public String toString() {
     
     return "Student{" + "name='" + name + '\'' + ", age=" + age + ", sex=" + sex + ", birthday=" + birthday + ", " +
-                   "locations=" + locations + ", skills=" + skills + ", hobbies=" + hobbies + ", pet=" + pet + '}';
+                   "locations=" + locations + ", skills=" + Arrays.toString(skills) + ", hobbies=" + hobbies + ", " +
+                   "pet=" + pet + '}';
 }
 
 }

@@ -12,7 +12,7 @@ private DebugDao debugDao;
 
 public String getMsg(String paramMsg) {
     
-    String resultStr = debugDao.getMsg();
+    String resultStr= debugDao.getMsg();
     return paramMsg + " [" + resultStr + "] ";
 }
 
