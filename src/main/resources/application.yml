@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: prod
+    active: dev
 
 student:
   name: jack
@@ -8,11 +8,26 @@ student:
   birthday: 2018/08/26
   locations: {province: 安徽, city: 合肥, zoom: 包河}
   skills:
-  - 编程
-  - 送外卖
+    - 编程
+    - 送外卖
   hobbies:
-  - 游戏
-  - 足球
+    - 游戏
+    - 足球
   pet:
     nickName: 旺财
     strain: 哈士奇
+
+
+#一个yml文件中可以写多个配置文件，配置文件之间用 --- 分割
+#建议写成多个文件 xxx-dev.yml xxx-prod.yml
+---
+
+spring:
+  profiles: prod
+
+---
+
+spring:
+  profiles: dev
+student:
+  name: jack-dev
