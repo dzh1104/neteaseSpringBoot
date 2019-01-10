@@ -3,6 +3,7 @@ spring:
     active: dev
 
 student:
+  email: 120844qq.com
   name: jack
   age: 18
   birthday: 2018/08/26
@@ -13,8 +14,8 @@ student:
   hobbies:
     - 游戏
     - 足球
-  pet: {strain2: 哈士奇2, nickname: 旺财678}
-#    strain2: 哈士奇2
+  pet: {strain: 哈士奇2, nickname: 旺财678}
+#    strain: 哈士奇2
 #    nickname: 旺财678
 
 
