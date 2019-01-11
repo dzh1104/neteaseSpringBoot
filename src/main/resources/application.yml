@@ -3,8 +3,8 @@ spring:
     active: dev
 
 student:
-  email: 120844qq.com
-  name: jack
+  email: 120844@qq.com
+  name: jack-yml
   age: 18
   birthday: 2018/08/26
   locations: {province: 安徽, city: 合肥, zoom: 包河}
@@ -31,4 +31,4 @@ spring:
 spring:
   profiles: dev
 student:
-  name: jack-dev
+  name: jack-dev-yml

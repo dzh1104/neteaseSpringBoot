@@ -18,6 +18,8 @@ import java.util.Map;
  * SpEL                不支持                                    支持
  * JSR303数据校验        支持                                     不支持
  * 注入复杂类型           支持                                     不支持
+ *
+ * 优先级：yml > properties > @Value
  */
 @Component
 @ConfigurationProperties(prefix = "student")
@@ -28,6 +30,7 @@ public class Student {
 @Value("sdfsdfd")
 private String email;
 
+@Value("jack-value")
 private String name;
 
 private int age;
