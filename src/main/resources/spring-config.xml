@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--
+            不推荐手写spring配置文件，应该用springboot自动装配
+            配置：xml配置文件 或者 通过注解配置类
+            springboot推荐用注解方式进行配置：@Configuration @Bean
+            见com.netease.accidence.config.AppConfig
+        -->
+        <bean id="pet" class="com.netease.accidence.entity.Pet">
+            <property name="nickname" value="花子23"></property>
+            <property name="strian" value="土狗23"></property>
+        </bean>
+</beans>

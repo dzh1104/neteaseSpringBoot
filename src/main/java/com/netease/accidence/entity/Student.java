@@ -2,6 +2,7 @@ package com.netease.accidence.entity;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -20,10 +21,15 @@ import java.util.Map;
  * 注入复杂类型           支持                                     不支持
  *
  * 优先级：yml > properties > @Value
+ *
+ * @PropertySource: 默认会加载application.properties/application.yml文件中的数据；如果是其他的文件名，需要显示指明
+ * @PropertySource(value={"classpath:config.properties"})
+ * 但是，这种形式只支持properties，不能加载yml
  */
 @Component
 @ConfigurationProperties(prefix = "student")
 @Validated
+@PropertySource(value = {"classpath:config.properties"})
 public class Student {
 
 @Email
@@ -46,6 +52,19 @@ private String[] skills;
 private List<String> hobbies;
 
 private Pet pet;
+
+@Value("#{student.height}")
+private int height;
+
+public int getHeight() {
+    
+    return height;
+}
+
+public void setHeight(int height) {
+    
+    this.height = height;
+}
 
 public String getName() {
     
@@ -137,7 +156,7 @@ public String toString() {
     
     return "Student{" + "email='" + email + '\'' + ", name='" + name + '\'' + ", age=" + age + ", sex=" + sex + ", " +
                    "birthday=" + birthday + ", locations=" + locations + ", skills=" + Arrays.toString(skills) + ", " +
-                   "hobbies=" + hobbies + ", pet=" + pet + '}';
+                   "hobbies=" + hobbies + ", pet=" + pet + ", height=" + height + '}';
 }
 
 public void setPet(Pet pet) {

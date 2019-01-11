@@ -30,6 +30,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--编写properties/yml配置文件时，会给出提示-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>

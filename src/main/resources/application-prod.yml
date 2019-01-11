@@ -1,6 +1,3 @@
-server:
-  port: 9528
-
 #对应的实体类上加注解，并且要加getter/setter
 student:
 #  name: jack-prod

@@ -1,11 +1,11 @@
 spring:
   profiles:
-    active: dev
+#    active: dev
 
 student:
   email: 120844@qq.com
   name: jack-yml
-  age: 18
+  age: ${custom.num2:87} #yml文件中引用properties中的配置 ${custom.num2}没有，原样输出，可以写一个默认值
   birthday: 2018/08/26
   locations: {province: 安徽, city: 合肥, zoom: 包河}
   skills:
@@ -18,6 +18,8 @@ student:
 #    strain: 哈士奇2
 #    nickname: 旺财678
 
+server:
+  port: 9527
 
 #一个yml文件中可以写多个配置文件，配置文件之间用 --- 分割
 #建议写成多个文件 xxx-dev.yml xxx-prod.yml
@@ -26,9 +28,18 @@ student:
 spring:
   profiles: prod
 
+server:
+  port: 9528
+
 ---
 
 spring:
   profiles: dev
 student:
   name: jack-dev-yml
+
+server:
+  port: 9529
+
+# 动态指定环境
+#  i: 命令行方式 --spring.profiles.active=dev 在编辑器中设置，具体看有道云笔记
