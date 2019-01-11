@@ -43,3 +43,9 @@ server:
 
 # 动态指定环境
 #  i: 命令行方式 --spring.profiles.active=dev 在编辑器中设置，具体看有道云笔记
+
+# 配置文件的位置（application.properties、application.yml）有四个地方，若动态指定的话，注意优先级会调整
+# 项目根目录/config
+# 项目根目录
+# classpath/config
+# classpath
