@@ -1,6 +1,6 @@
 spring:
   profiles:
-#    active: dev
+    active: dev
 
 student:
   email: 120844@qq.com
@@ -20,6 +20,10 @@ student:
 
 server:
   port: 9527
+  servlet:
+#    ContextPath must start with '/' and not end with '/'
+#    context-path: boot
+    context-path: /boot
 
 #一个yml文件中可以写多个配置文件，配置文件之间用 --- 分割
 #建议写成多个文件 xxx-dev.yml xxx-prod.yml
@@ -44,7 +48,7 @@ server:
 # 动态指定环境
 #  i: 命令行方式 --spring.profiles.active=dev 在编辑器中设置，具体看有道云笔记
 
-# 配置文件的位置（application.properties、application.yml）有四个地方，若动态指定的话，注意优先级会调整
+# 项目内部配置文件的位置（application.properties、application.yml）有四个地方，若动态指定的话，注意优先级会调整
 # 项目根目录/config
 # 项目根目录
 # classpath/config
