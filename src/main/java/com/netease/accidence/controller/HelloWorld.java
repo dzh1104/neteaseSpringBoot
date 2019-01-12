@@ -16,7 +16,7 @@ public class HelloWorld {
         return "hello world! hello springboot!";
     }
 
-// @ResponseBody
+// @ResponseBody // 要去除
 @RequestMapping("/welcome")
 public String welcome(Map<String, Object> map) {
     // geithymeleaf准备数据
