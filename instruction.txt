@@ -174,3 +174,25 @@ springboot开发web项目（静态资源html css js 图片...）
         2.查看thymeleaf官网：https://www.thymeleaf.org/
 
 
+    SpringBoot整合JSP开发
+        之前springboot默认 自带一个内置的tomcat，不需要打war包，直接通过jar即可运行
+        但是，如果要整合jsp开发，就需要配置一个外置的tomcat，需要打war包。
+
+     开发步骤：
+        1.新建boot项目，war
+            注意：
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                provided: 意思是 将项目打包时，不需要将内置的tomcat一起打包
+        2.需要打war包，所以建立基本的web项目所需要的目录结构
+            webapps/WEB-INF (需要)
+            webapps/WEB-INF/web.xml (不需要，springboot自动配置)
+            webapps/index.jsp
+        3.创建tomcat实例、部署项目
+            访问： 域名:端口/项目名_war/文件名
+        4.如果是一个war包的springboot项目，在启动服务器tomcat时，会自动调用ServletInitializer类中的configure方法，
+        进而调用springboot的主配置类，从而启动springboot。
+        即在启动tomcat服务器时，会启动 1.启动tomcat 2.启动springboot
