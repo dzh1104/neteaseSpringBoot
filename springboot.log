@@ -1,0 +1,4 @@
+2019-01-12 11:59:26.778  INFO 95668 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-12 11:59:27.308  WARN 95668 --- [main] c.netease.accidence.entity.StudentTest   : warn****
+2019-01-12 11:59:27.308 ERROR 95668 --- [main] c.netease.accidence.entity.StudentTest   : error****
+2019-01-12 11:59:27.315  INFO 95668 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

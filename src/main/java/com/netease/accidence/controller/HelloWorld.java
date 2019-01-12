@@ -4,13 +4,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 @Controller
 public class HelloWorld {
     
     @ResponseBody
-    @RequestMapping("helloworld")
+    @RequestMapping("/helloworld")
     public String helloWorld() {
     
         return "hello world! hello springboot!";
     }
+
+// @ResponseBody
+@RequestMapping("/welcome")
+public String welcome(Map<String, Object> map) {
+    // geithymeleaf准备数据
+    
+    // 给request域中放welcome
+    map.put("welcome", "welcome thymeleaf");
+    
+    return "result";
+}
 }
